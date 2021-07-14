@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.*;
 import java.net.URL;
@@ -21,17 +22,14 @@ public class GameCenter implements Initializable {
 
 
 
-    private ArrayList<File> songs = new ArrayList<>();
-    private File musicFolder = new File("music");
-    private File[] files = new File[7];
-
-//    File action_sell_buy = new File("action_sell_buy.mp3");
-//    File action_upgrade = new File("action_upgrade.mp3");
-//    File action_well_water = new File("action_well_water.mp3");
-//    File item_add = new File("item_add.mp3");
-//    File item_cancel = new File("item_cancel.mp3");
-//    File ui_button_click = new File("ui_button_click.mp3");
-//    File ui_button_hover = new File("ui_button_hover.mp3");
+    Media media_sell_buy = new Media(getClass().getResource("action_sell_buy.mp3").toString());
+    MediaPlayer player_sell_buy = new MediaPlayer(media_sell_buy);
+    Media media_upgrade = new Media(getClass().getResource("action_upgrade.mp3").toString());
+    MediaPlayer player_upgrade = new MediaPlayer(media_upgrade);
+    Media media_fool_action = new Media(getClass().getResource("fool_action.mp3").toString());
+    MediaPlayer player_fool = new MediaPlayer(media_fool_action);
+    Media media_well = new Media(getClass().getResource("action_well_water.mp3").toString());
+    MediaPlayer player_well = new MediaPlayer(media_well);
 
 
 
@@ -50,7 +48,6 @@ public class GameCenter implements Initializable {
     BufferedReader bnameReader = new BufferedReader(nameReader);
     String username;
     //  for reading name from login or signup
-
     BufferedWriter WBuffer;
     FileWriter Writer;
     PrintWriter PWriter;
@@ -101,14 +98,8 @@ public class GameCenter implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        files = musicFolder.listFiles();
-        if (files != null){
-            for (int i = 0; i < files.length; i++) {
-                songs.add(files[i]);
-            }
-        }
-
+        // music part
+        // music part
 
         //File Whatsup = new File("..\\log.txt");
         //DateTimeFormatter dtfNow = DateTimeFormatter.ofPattern(", yy/MM/dd _ HH:mm:ss, ");
@@ -201,105 +192,169 @@ public class GameCenter implements Initializable {
     public void upgradeGristmill() throws IOException{
         for (Factory factory : factories) {
             if (factory.getfName().equalsIgnoreCase("gristmill") && factory.isExist()) {
-                if (factory.getLevel()==1) {
+                if (coins >= factory.getBuildPrice()/2) {
+                    coins -= factory.getBuildPrice()/2;
+                    player_upgrade.play();
+                    player_upgrade.setAutoPlay(true);
+                    player_upgrade.seek(player_upgrade.getStartTime());
                     System.out.println("Factory is upgraded. Enjoy :) ");
                     //  log
                     PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
                     //  log
+                    factory.upgrade();
+                    upgristmill.setDisable(true);
+                    break;
                 }
-                factory.upgrade();
-                upgristmill.setDisable(true);
-                break;
+                else {
+                    player_fool.play();
+                    player_fool.setAutoPlay(true);
+                    player_fool.seek(player_fool.getStartTime());
+                }
             }
         }
     }
     public void upgradeDrapery() throws IOException{
         for (Factory factory : factories) {
             if (factory.getfName().equalsIgnoreCase("drapery") && factory.isExist()) {
-                if (factory.getLevel()==1) {
+                if (coins >= factory.getBuildPrice()/2) {
+                    coins -= factory.getBuildPrice()/2;
+                    player_upgrade.play();
+                    player_upgrade.setAutoPlay(true);
+                    player_upgrade.seek(player_upgrade.getStartTime());
                     System.out.println("Factory is upgraded. Enjoy :) ");
                     //  log
                     PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
                     //  log
+                    factory.upgrade();
+                    updrapery.setDisable(true);
+                    break;
                 }
-                factory.upgrade();
-                updrapery.setDisable(true);
-                break;
+                else {
+                    player_fool.play();
+                    player_fool.setAutoPlay(true);
+                    player_fool.seek(player_fool.getStartTime());
+                }
             }
         }
     }
     public void upgradeMilkBoxing() throws IOException{
         for (Factory factory : factories) {
             if (factory.getfName().equalsIgnoreCase("milkBoxing") && factory.isExist()) {
-                if (factory.getLevel()==1) {
+                if (coins >= factory.getBuildPrice()/2) {
+                    coins -= factory.getBuildPrice()/2;
+                    player_upgrade.play();
+                    player_upgrade.setAutoPlay(true);
+                    player_upgrade.seek(player_upgrade.getStartTime());
                     System.out.println("Factory is upgraded. Enjoy :) ");
                     //  log
                     PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
                     //  log
+                    factory.upgrade();
+                    upmilkboxing.setDisable(true);
+                    break;
                 }
-                factory.upgrade();
-                upmilkboxing.setDisable(true);
-                break;
+                else {
+                    player_fool.play();
+                    player_fool.setAutoPlay(true);
+                    player_fool.seek(player_fool.getStartTime());
+                }
+
             }
         }
     }
     public void upgradeSewing() throws IOException{
         for (Factory factory : factories) {
             if (factory.getfName().equalsIgnoreCase("sewing") && factory.isExist()) {
-                if (factory.getLevel()==1) {
+                if (coins >= factory.getBuildPrice()/2) {
+                    coins -= factory.getBuildPrice()/2;
+                    player_upgrade.play();
+                    player_upgrade.setAutoPlay(true);
+                    player_upgrade.seek(player_upgrade.getStartTime());
                     System.out.println("Factory is upgraded. Enjoy :) ");
                     //  log
                     PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
                     //  log
+                    factory.upgrade();
+                    upsewing.setDisable(true);
+                    break;
                 }
-                factory.upgrade();
-                upsewing.setDisable(true);
-                break;
+                else {
+                    player_fool.play();
+                    player_fool.setAutoPlay(true);
+                    player_fool.seek(player_fool.getStartTime());
+                }
             }
         }
     }
     public void upgradeBakery() throws IOException{
         for (Factory factory : factories) {
             if (factory.getfName().equalsIgnoreCase("bakery") && factory.isExist()) {
-                if (factory.getLevel()==1) {
+                if (coins >= factory.getBuildPrice()/2) {
+                    coins -= factory.getBuildPrice()/2;
+                    player_upgrade.play();
+                    player_upgrade.setAutoPlay(true);
+                    player_upgrade.seek(player_upgrade.getStartTime());
                     System.out.println("Factory is upgraded. Enjoy :) ");
                     //  log
                     PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
                     //  log
+                    factory.upgrade();
+                    upbakery.setDisable(true);
+                    break;
                 }
-                factory.upgrade();
-                upbakery.setDisable(true);
-                break;
+                else {
+                    player_fool.play();
+                    player_fool.setAutoPlay(true);
+                    player_fool.seek(player_fool.getStartTime());
+                }
             }
         }
     }
     public void upgradeIcecream() throws IOException{
         for (Factory factory : factories) {
             if (factory.getfName().equalsIgnoreCase("iceCream") && factory.isExist()) {
-                if (factory.getLevel()==1) {
+                if (coins >= factory.getBuildPrice()/2) {
+                    coins -= factory.getBuildPrice()/2;
+                    player_upgrade.play();
+                    player_upgrade.setAutoPlay(true);
+                    player_upgrade.seek(player_upgrade.getStartTime());
                     System.out.println("Factory is upgraded. Enjoy :) ");
                     //  log
                     PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
                     //  log
+                    factory.upgrade();
+                    upicecream.setDisable(true);
+                    break;
                 }
-                factory.upgrade();
-                upicecream.setDisable(true);
-                break;
+                else {
+                    player_fool.play();
+                    player_fool.setAutoPlay(true);
+                    player_fool.seek(player_fool.getStartTime());
+                }
             }
         }
     }
     public void upgradeIncubator() throws IOException{
         for (Factory factory : factories) {
             if (factory.getfName().equalsIgnoreCase("incubator") && factory.isExist()) {
-                if (factory.getLevel()==1) {
+                if (coins >= factory.getBuildPrice()/2) {
+                    coins -= factory.getBuildPrice()/2;
+                    player_upgrade.play();
+                    player_upgrade.setAutoPlay(true);
+                    player_upgrade.seek(player_upgrade.getStartTime());
                     System.out.println("Factory is upgraded. Enjoy :) ");
                     //  log
                     PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
                     //  log
+                    factory.upgrade();
+                    upincubator.setDisable(true);
+                    break;
                 }
-                factory.upgrade();
-                upincubator.setDisable(true);
-                break;
+                else {
+                    player_fool.play();
+                    player_fool.setAutoPlay(true);
+                    player_fool.seek(player_fool.getStartTime());
+                }
             }
         }
     }
@@ -310,6 +365,9 @@ public class GameCenter implements Initializable {
         Factory factory = new Factory("gristmill");
         int x = 0;
         if ( coins >= factory.getBuildPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             x = 1;
             factories.add(factory);
             coins -= factory.getBuildPrice();
@@ -319,7 +377,10 @@ public class GameCenter implements Initializable {
             //  log
         }
         if (x==0){
-            AlertBox.displayAlert("You don't have enough money");
+            //AlertBox.displayAlert("You don't have enough money");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to start factory");
             //  log
@@ -331,6 +392,9 @@ public class GameCenter implements Initializable {
         Factory factory = new Factory("drapery");
         int x = 0;
         if ( coins >= factory.getBuildPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             x = 1;
             factories.add(factory);
             coins -= factory.getBuildPrice();
@@ -341,6 +405,9 @@ public class GameCenter implements Initializable {
         }
         if (x==0){
             AlertBox.displayAlert("You don't have enough money");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to start factory");
             //  log
@@ -352,6 +419,9 @@ public class GameCenter implements Initializable {
         Factory factory = new Factory("milkBoxing");
         int x = 0;
         if ( coins >= factory.getBuildPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             x = 1;
             factories.add(factory);
             coins -= factory.getBuildPrice();
@@ -362,6 +432,9 @@ public class GameCenter implements Initializable {
         }
         if (x==0){
             AlertBox.displayAlert("You don't have enough money");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to start factory");
             //  log
@@ -373,6 +446,9 @@ public class GameCenter implements Initializable {
         Factory factory = new Factory("sewing");
         int x = 0;
         if ( coins >= factory.getBuildPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             x = 1;
             factories.add(factory);
             coins -= factory.getBuildPrice();
@@ -383,6 +459,9 @@ public class GameCenter implements Initializable {
         }
         if (x==0){
             AlertBox.displayAlert("You don't have enough money");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to start factory");
             //  log
@@ -394,6 +473,9 @@ public class GameCenter implements Initializable {
         Factory factory = new Factory("bakery");
         int x = 0;
         if ( coins >= factory.getBuildPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             x = 1;
             factories.add(factory);
             coins -= factory.getBuildPrice();
@@ -404,6 +486,9 @@ public class GameCenter implements Initializable {
         }
         if (x==0){
             AlertBox.displayAlert("You don't have enough money");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to start factory");
             //  log
@@ -415,6 +500,9 @@ public class GameCenter implements Initializable {
         Factory factory = new Factory("iceCream");
         int x = 0;
         if ( coins >= factory.getBuildPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             x = 1;
             factories.add(factory);
             coins -= factory.getBuildPrice();
@@ -425,6 +513,9 @@ public class GameCenter implements Initializable {
         }
         if (x==0){
             AlertBox.displayAlert("You don't have enough money");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to start factory");
             //  log
@@ -436,6 +527,9 @@ public class GameCenter implements Initializable {
         Factory factory = new Factory("incubator");
         int x = 0;
         if ( coins >= factory.getBuildPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             x = 1;
             factories.add(factory);
             coins -= factory.getBuildPrice();
@@ -446,6 +540,9 @@ public class GameCenter implements Initializable {
         }
         if (x==0){
             AlertBox.displayAlert("You don't have enough money");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to start factory");
             //  log
@@ -459,37 +556,54 @@ public class GameCenter implements Initializable {
     public void buyChicken() throws IOException{
         DomesticAnimal dome = new DomesticAnimal("chicken");
         if (coins >= dome.getPrice()) {
-                chickenNo++;
-                dome.setName(dome.getName() + chickenNo);
-                chickens.add(dome);
-                System.out.println("You have your new chicken");
-                coins -= dome.getPrice();
-                for (Map.Entry task : Tasks.entrySet()) {
-                    if (dome.getName().startsWith(String.valueOf(task.getKey()).toLowerCase(Locale.ROOT)))
-                        task.setValue(Integer.parseInt(String.valueOf(task.getValue())) - 1);
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
+            chickenNo++;
+            dome.setName(dome.getName() + chickenNo);
+            chickens.add(dome);
+            System.out.println("You have your new chicken");
+            coins -= dome.getPrice();
+            for (Map.Entry task : Tasks.entrySet()) {
+                if (dome.getName().startsWith(String.valueOf(task.getKey()).toLowerCase(Locale.ROOT)))
+                    task.setValue(Integer.parseInt(String.valueOf(task.getValue())) - 1);
+            }
+            for (int i = 0; i < wildAnimals.size(); i++) {
+                int[] wildPLACE = wildAnimals.get(i).getPlace();
+                int[] domePLACE = dome.getPlace();
+                if (wildPLACE[0] == domePLACE[0] && wildPLACE[1] == domePLACE[1]) {
+                    //System.out.println("Chicken fell on wild animal! :(((");
+                    chickens.remove(chickens.size() - 1);
+                    break;
                 }
-                for (int i = 0; i < wildAnimals.size(); i++) {
-                    int[] wildPLACE = wildAnimals.get(i).getPlace();
-                    int[] domePLACE = dome.getPlace();
-                    if (wildPLACE[0] == domePLACE[0] && wildPLACE[1] == domePLACE[1]) {
-                        //System.out.println("Chicken fell on wild animal! :(((");
-                        chickens.remove(chickens.size() - 1);
-                        break;
-                    }
-                }
-
-                //  log
-                Writerlog = new FileWriter(Whatsup, true);
-                WBufferlog = new BufferedWriter(Writerlog);
-                PWriterlog = new PrintWriter(WBufferlog);
-                PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "New Domestic animal");
-                PWriterlog.close();
-                //  log
+            }
+            //  log
+            Writerlog = new FileWriter(Whatsup, true);
+            WBufferlog = new BufferedWriter(Writerlog);
+            PWriterlog = new PrintWriter(WBufferlog);
+            PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "New Domestic animal");
+            PWriterlog.close();
+            //  log
+        }
+        else {
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
+            //  log
+            Writerlog = new FileWriter(Whatsup, true);
+            WBufferlog = new BufferedWriter(Writerlog);
+            PWriterlog = new PrintWriter(WBufferlog);
+            PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to buy animal");
+            PWriterlog.close();
+            //  log
         }
     }
     public void buyTurkey()throws IOException{
         DomesticAnimal dome = new DomesticAnimal("turkey");
         if (coins >= dome.getPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             turkeyNo++;
             dome.setName(dome.getName() + turkeyNo);
             turkeies.add(dome);
@@ -517,10 +631,25 @@ public class GameCenter implements Initializable {
             PWriterlog.close();
             //  log
         }
+        else {
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
+            //  log
+            Writerlog = new FileWriter(Whatsup, true);
+            WBufferlog = new BufferedWriter(Writerlog);
+            PWriterlog = new PrintWriter(WBufferlog);
+            PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to buy animal");
+            PWriterlog.close();
+            //  log
+        }
     }
     public void buyBuffalo() throws IOException{
         DomesticAnimal dome = new DomesticAnimal("buffalo");
         if (coins >= dome.getPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             buffaloNo++;
             dome.setName(dome.getName() + buffaloNo);
             buffalos.add(dome);
@@ -541,7 +670,6 @@ public class GameCenter implements Initializable {
                     break;
                 }
             }
-
             //  log
             Writerlog = new FileWriter(Whatsup, true);
             WBufferlog = new BufferedWriter(Writerlog);
@@ -550,10 +678,25 @@ public class GameCenter implements Initializable {
             PWriterlog.close();
             //  log
         }
+        else {
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
+            //  log
+            Writerlog = new FileWriter(Whatsup, true);
+            WBufferlog = new BufferedWriter(Writerlog);
+            PWriterlog = new PrintWriter(WBufferlog);
+            PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Not enough money to buy animal");
+            PWriterlog.close();
+            //  log
+        }
     }
     public void buyCat() throws IOException{
         Cat cat = new Cat();
         if (coins >= cat.getPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             cat.setNumber(cats.size() + 1);
             cats.add(cat);
             coins -= cat.getPrice();
@@ -607,6 +750,9 @@ public class GameCenter implements Initializable {
             }
         } else {
             System.out.println("You don't have enough money to buy a cat!");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             Writerlog = new FileWriter(Whatsup, true);
             WBufferlog = new BufferedWriter(Writerlog);
@@ -619,6 +765,9 @@ public class GameCenter implements Initializable {
     public void buyDog() throws IOException{
         GunDog dog = new GunDog();
         if (coins >= dog.getPrice()) {
+            player_sell_buy.play();
+            player_sell_buy.setAutoPlay(true);
+            player_sell_buy.seek(player_sell_buy.getStartTime());
             dog.setNumber(gunDogs.size() + 1);
             gunDogs.add(dog);
             coins -= dog.getPrice();
@@ -626,7 +775,6 @@ public class GameCenter implements Initializable {
                 if (String.valueOf(task.getKey()).equalsIgnoreCase("Hound"))
                     task.setValue(Integer.parseInt(String.valueOf(task.getValue()))-1);
             }
-
             System.out.println("You have your new Hound");
             //  log
             Writerlog = new FileWriter(Whatsup, true);
@@ -635,7 +783,6 @@ public class GameCenter implements Initializable {
             PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "New Hound");
             PWriterlog.close();
             //  log
-
             for (int i = 0; i < wildAnimals.size(); i++) {
                 int[] wildPLACE=wildAnimals.get(i).getPlace();
                 int[] dogPLACE=dog.getPlace();
@@ -647,9 +794,11 @@ public class GameCenter implements Initializable {
                     break;
                 }
             }
-
         } else {
             System.out.println("You don't have enough money to buy a Hound!");
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             //  log
             Writerlog = new FileWriter(Whatsup, true);
             WBufferlog = new BufferedWriter(Writerlog);
@@ -665,6 +814,9 @@ public class GameCenter implements Initializable {
     public void well() throws IOException{
         if (well.getCurrentCapacity() == 0) {
             if (!well.isFilling()) {
+                player_well.play();
+                player_well.setAutoPlay(true);
+                player_well.seek(player_well.getStartTime());
                 well.setFilling(true);
                 System.out.println("Start to filling tanker ...");
                 //  log
@@ -676,12 +828,15 @@ public class GameCenter implements Initializable {
                 //  log
             }
             else{
-                System.out.println("Tanker is filling ... !");
+                System.out.println("Tanker is full !");
                 //  log
-                PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Well failed (is filling)");
+                PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Well failed (is full)");
                 //  log
             }
         } else {
+            player_fool.play();
+            player_fool.setAutoPlay(true);
+            player_fool.seek(player_fool.getStartTime());
             System.out.println("You still have some water in well.");
             //  log
             PWriterlog.println("[Error]" + dtfNow.format(LocalDateTime.now()) + "Tanker wasn't empty.Well failed");
