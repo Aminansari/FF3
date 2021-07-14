@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
 
 import java.io.*;
 import java.net.URL;
@@ -14,35 +15,27 @@ public class GameCenter implements Initializable {
 
 
     @FXML
-    private Button gristmill;
+    private Button gristmill , drapery,bakery,sewing,milkboxing,icecream,incubator;
     @FXML
-    private Button drapery;
-    @FXML
-    private Button bakery;
-    @FXML
-    private Button sewing;
-    @FXML
-    private Button milkboxing;
-    @FXML
-    private Button icecream;
-    @FXML
-    private Button incubator;
-    @FXML
-    private Button upgristmill;
-    @FXML
-    private Button updrapery;
-    @FXML
-    private Button upbakery;
-    @FXML
-    private Button upsewing;
-    @FXML
-    private Button upmilkboxing;
-    @FXML
-    private Button upicecream;
-    @FXML
-    private Button upincubator;
+    private Button upgristmill , updrapery,upbakery,upsewing,upmilkboxing,upicecream,upincubator;
 
 
+
+    private ArrayList<File> songs = new ArrayList<>();
+    private File musicFolder = new File("music");
+    private File[] files = new File[7];
+
+//    File action_sell_buy = new File("action_sell_buy.mp3");
+//    File action_upgrade = new File("action_upgrade.mp3");
+//    File action_well_water = new File("action_well_water.mp3");
+//    File item_add = new File("item_add.mp3");
+//    File item_cancel = new File("item_cancel.mp3");
+//    File ui_button_click = new File("ui_button_click.mp3");
+//    File ui_button_hover = new File("ui_button_hover.mp3");
+
+
+
+    // for reading name from login or signup
     File file = new File("name.txt");
     FileReader nameReader;
 
@@ -56,7 +49,7 @@ public class GameCenter implements Initializable {
 
     BufferedReader bnameReader = new BufferedReader(nameReader);
     String username;
-
+    //  for reading name from login or signup
 
     BufferedWriter WBuffer;
     FileWriter Writer;
@@ -108,6 +101,15 @@ public class GameCenter implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        files = musicFolder.listFiles();
+        if (files != null){
+            for (int i = 0; i < files.length; i++) {
+                songs.add(files[i]);
+            }
+        }
+
+
         //File Whatsup = new File("..\\log.txt");
         //DateTimeFormatter dtfNow = DateTimeFormatter.ofPattern(", yy/MM/dd _ HH:mm:ss, ");
         //File AccountFile = new File("..\\Farm Frenzy 3(Users)/" + Farmer.getUsername() + ".txt");
@@ -195,16 +197,115 @@ public class GameCenter implements Initializable {
 
     }
 
-    public void upgradeGristmill(){}
-    public void upgradeDrapery(){}
-    public void upgradeMilkBoxing(){}
-    public void upgradeSewing(){}
-    public void upgradeBakery(){}
-    public void upgradeIcecream(){}
-    public void upgradeIncubator(){}
+    //  upgrade
+    public void upgradeGristmill() throws IOException{
+        for (Factory factory : factories) {
+            if (factory.getfName().equalsIgnoreCase("gristmill") && factory.isExist()) {
+                if (factory.getLevel()==1) {
+                    System.out.println("Factory is upgraded. Enjoy :) ");
+                    //  log
+                    PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
+                    //  log
+                }
+                factory.upgrade();
+                upgristmill.setDisable(true);
+                break;
+            }
+        }
+    }
+    public void upgradeDrapery() throws IOException{
+        for (Factory factory : factories) {
+            if (factory.getfName().equalsIgnoreCase("drapery") && factory.isExist()) {
+                if (factory.getLevel()==1) {
+                    System.out.println("Factory is upgraded. Enjoy :) ");
+                    //  log
+                    PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
+                    //  log
+                }
+                factory.upgrade();
+                updrapery.setDisable(true);
+                break;
+            }
+        }
+    }
+    public void upgradeMilkBoxing() throws IOException{
+        for (Factory factory : factories) {
+            if (factory.getfName().equalsIgnoreCase("milkBoxing") && factory.isExist()) {
+                if (factory.getLevel()==1) {
+                    System.out.println("Factory is upgraded. Enjoy :) ");
+                    //  log
+                    PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
+                    //  log
+                }
+                factory.upgrade();
+                upmilkboxing.setDisable(true);
+                break;
+            }
+        }
+    }
+    public void upgradeSewing() throws IOException{
+        for (Factory factory : factories) {
+            if (factory.getfName().equalsIgnoreCase("sewing") && factory.isExist()) {
+                if (factory.getLevel()==1) {
+                    System.out.println("Factory is upgraded. Enjoy :) ");
+                    //  log
+                    PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
+                    //  log
+                }
+                factory.upgrade();
+                upsewing.setDisable(true);
+                break;
+            }
+        }
+    }
+    public void upgradeBakery() throws IOException{
+        for (Factory factory : factories) {
+            if (factory.getfName().equalsIgnoreCase("bakery") && factory.isExist()) {
+                if (factory.getLevel()==1) {
+                    System.out.println("Factory is upgraded. Enjoy :) ");
+                    //  log
+                    PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
+                    //  log
+                }
+                factory.upgrade();
+                upbakery.setDisable(true);
+                break;
+            }
+        }
+    }
+    public void upgradeIcecream() throws IOException{
+        for (Factory factory : factories) {
+            if (factory.getfName().equalsIgnoreCase("iceCream") && factory.isExist()) {
+                if (factory.getLevel()==1) {
+                    System.out.println("Factory is upgraded. Enjoy :) ");
+                    //  log
+                    PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
+                    //  log
+                }
+                factory.upgrade();
+                upicecream.setDisable(true);
+                break;
+            }
+        }
+    }
+    public void upgradeIncubator() throws IOException{
+        for (Factory factory : factories) {
+            if (factory.getfName().equalsIgnoreCase("incubator") && factory.isExist()) {
+                if (factory.getLevel()==1) {
+                    System.out.println("Factory is upgraded. Enjoy :) ");
+                    //  log
+                    PWriterlog.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "The " + factory.getfName() + " Factory upgraded.");
+                    //  log
+                }
+                factory.upgrade();
+                upincubator.setDisable(true);
+                break;
+            }
+        }
+    }
+    //  upgrade
 
-
-    
+    //  build
     public void buildGristmill(){
         Factory factory = new Factory("gristmill");
         int x = 0;
@@ -352,9 +453,9 @@ public class GameCenter implements Initializable {
         incubator.setDisable(true);
         upincubator.setDisable(false);
     }
+    //  build
 
-
-
+    //  buy
     public void buyChicken() throws IOException{
         DomesticAnimal dome = new DomesticAnimal("chicken");
         if (coins >= dome.getPrice()) {
@@ -558,6 +659,9 @@ public class GameCenter implements Initializable {
             //  log
         }
     }
+    //  buy
+
+    // well & plant
     public void well() throws IOException{
         if (well.getCurrentCapacity() == 0) {
             if (!well.isFilling()) {
@@ -584,14 +688,19 @@ public class GameCenter implements Initializable {
             //  log
         }
     }
+    // welll & plant
 
+    //  truck
     public void truckGo() throws  IOException{}
     public void truckLoad() throws IOException{}
     public void truckUnload() throws IOException{}
     public void showStorage() throws IOException{}
     public void truckAssistant() throws IOException{}
+    //  truck
 
 
+
+    //  other function
     public int setSpaceGood(String Name) {
         if (Name.equalsIgnoreCase("egg")) {
             return 1;
@@ -757,7 +866,7 @@ public class GameCenter implements Initializable {
         }
         return nearestPlace;
     }
-
+    //  other function
 
 
 
