@@ -1,5 +1,10 @@
 package sample;
 
+import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.File;
 import java.util.Random;
 
 public class Cat {
@@ -7,6 +12,8 @@ public class Cat {
     private int[] place = new int[2];
     private int number;
     private boolean exist ;
+    @FXML
+    ImageView imgv_cat = new ImageView();
 
     public Cat() {
         Random rand = new Random();
@@ -15,8 +22,12 @@ public class Cat {
         this.exist = true;
     }
 
-    public void upgrade(){
+    public ImageView getImgv_cat() {
+        return imgv_cat;
+    }
 
+    public void setImgv_cat(ImageView imgv_cat) {
+        this.imgv_cat = imgv_cat;
     }
 
     public int getNumber() {

@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.File;
 import java.util.Random;
 
 public class DomesticAnimal {
@@ -12,7 +16,7 @@ public class DomesticAnimal {
     private String name;
     private int[] place = new int[2];
     private boolean exist ;
-
+    ImageView imgv_dome = new ImageView();
 
     public DomesticAnimal(String name) {
         Random rand = new Random();
@@ -43,6 +47,14 @@ public class DomesticAnimal {
 
     public DomesticAnimal() {
 
+    }
+
+    public ImageView getImgv_dome() {
+        return imgv_dome;
+    }
+
+    public void setImgv_dome(ImageView imgv_dome) {
+        this.imgv_dome = imgv_dome;
     }
 
     public int getNumber() {
