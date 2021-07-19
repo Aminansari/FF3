@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.io.*;
 import java.net.URL;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -67,41 +68,41 @@ public class Controller implements Initializable {
         PWriter.close();
 
         String selectedlevels = selectedLevel.getValue();
-        fileWriter.write(selectedlevels+"\n");
-        fileWriter.close();
         if (selectedlevels.equals(null)){
             AlertBox.displayAlert("You should choose a level first.");
         }
         else {
+            fileWriter.write(selectedlevels+"\n");
+            fileWriter.close();
             String[] SelectedLevel = selectedlevels.split(" ");
             Reader = new FileReader(AccountFile);
             RBuffer = new BufferedReader(Reader);
             String line = RBuffer.readLine();
             String MaxLevel = RBuffer.readLine();
             RBuffer.close();
-                if (Integer.parseInt(MaxLevel) >= Integer.parseInt(SelectedLevel[1]) && Integer.parseInt(SelectedLevel[1]) >= 1) {
+            if (Integer.parseInt(MaxLevel) >= Integer.parseInt(SelectedLevel[1]) && Integer.parseInt(SelectedLevel[1]) >= 1) {
 
-                    File transferManagerToCommands = new File("..\\logEnter.txt");
-                    transferManagerToCommands.createNewFile();
-                    Writer = new FileWriter(transferManagerToCommands, true);
-                    WBuffer = new BufferedWriter(Writer);
-                    PWriter = new PrintWriter(WBuffer);
+                File transferManagerToCommands = new File("..\\logEnter.txt");
+                transferManagerToCommands.createNewFile();
+                Writer = new FileWriter(transferManagerToCommands, true);
+                WBuffer = new BufferedWriter(Writer);
+                PWriter = new PrintWriter(WBuffer);
 
-                    PWriter.println(user);
-                    PWriter.println(SelectedLevel[1]);
-                    PWriter.close();
+                PWriter.println(user);
+                PWriter.println(SelectedLevel[1]);
+                PWriter.close();
 
-                    Writer = new FileWriter(Whatsup, true);
-                    WBuffer = new BufferedWriter(Writer);
-                    PWriter = new PrintWriter(WBuffer);
-                    PWriter.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "Entered the game");
-                    PWriter.close();
-                    Main main = new Main();
-                    main.changingScene("gameCenter.fxml");
-                }
-                else {
-                    AlertBox.displayAlert("This level is locked for you! Select another level.");
-                }
+                Writer = new FileWriter(Whatsup, true);
+                WBuffer = new BufferedWriter(Writer);
+                PWriter = new PrintWriter(WBuffer);
+                PWriter.println("[Info]" + dtfNow.format(LocalDateTime.now()) + "Entered the game");
+                PWriter.close();
+                Main main = new Main();
+                main.changingScene("gameCenter.fxml");
+            }
+            else {
+                AlertBox.displayAlert("This level is locked for you! Select another level.");
+            }
         }
 
 
@@ -123,7 +124,7 @@ public class Controller implements Initializable {
             }
         }
     }
-    public void confirmUsePass(ActionEvent event) throws IOException {
+    public void confirmUsePass(ActionEvent event) throws IOException, SQLException {
         if (username==null||password==null){
             AlertBox.displayAlert("Nothing entered!");
         }
@@ -131,6 +132,15 @@ public class Controller implements Initializable {
             Account account = new Account();
             System.out.println(username.getText());
             System.out.println(password.getText());
+            //***************
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ff3","root","Amin0831#");
+        Statement statement = connection.createStatement();
+        String query = " insert into users (Username, Password) values (?, ?)";
+        PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString (1, username.getText());
+            preparedStmt.setString (2, password.getText());
+            //****************
+
             if (account.USERNAME(username.getText())) {
                 File RepeatCheckUp = new File("..\\Farm Frenzy 3(Users)/" + username.getText() + ".txt");
                 if (!RepeatCheckUp.exists()) {

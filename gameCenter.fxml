@@ -4,82 +4,107 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="490.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameCenter">
-   <children>
-      <ImageView fitHeight="490.0" fitWidth="678.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/photo_2021-04-23_10-38-54.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="6.0" onMouseClicked="#buyChicken" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/chicken.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="51.0" onMouseClicked="#buyTurkey" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/turkey.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="96.0" onMouseClicked="#buyBuffalo" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/buffalo.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="39.0" layoutX="142.0" onMouseClicked="#buyCat" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/cat.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="187.0" onMouseClicked="#buyDog" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/dog.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="85.0" fitWidth="654.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/status.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="108.0" fitWidth="255.0" layoutX="399.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/road_3.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="85.0" fitWidth="147.0" layoutX="507.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/Untitled-1.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="78.0" fitWidth="57.0" layoutX="339.0" layoutY="61.0" onMouseClicked="#well" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/well.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="78.0" fitWidth="73.0" layoutX="125.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/truck.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="116.0" fitWidth="167.0" layoutX="226.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Image/storage.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="gristmill" layoutX="109.0" layoutY="143.0" mnemonicParsing="false" onAction="#buildGristmill" text="Gristmill" />
-      <Button fx:id="milkboxing" layoutX="64.0" layoutY="249.0" mnemonicParsing="false" onAction="#buildMilkBoxing" text="MilkBoxing" />
-      <Button fx:id="icecream" layoutX="83.0" layoutY="332.0" mnemonicParsing="false" onAction="#buildIceCream" text="Icecream" />
-      <Button fx:id="drapery" layoutX="475.0" layoutY="143.0" mnemonicParsing="false" onAction="#buildDrapery" text="Drapery" />
-      <Button fx:id="bakery" layoutX="555.0" layoutY="249.0" mnemonicParsing="false" onAction="#buildBakery" text="Bakery" />
-      <Button fx:id="sewing" layoutX="529.0" layoutY="344.0" mnemonicParsing="false" onAction="#buildSewing" text="Sewing" />
-      <Button fx:id="incubator" layoutX="83.0" layoutY="369.0" mnemonicParsing="false" onAction="#buildIncubator" text="Incubator" />
-      <Button fx:id="upgristmill" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#upgradeGristmill" text="UP" />
-      <Button fx:id="upmilkboxing" layoutX="14.0" layoutY="192.0" mnemonicParsing="false" onAction="#upgradeMilkBoxing" text="UP" />
-      <Button fx:id="upicecream" layoutX="10.0" layoutY="296.0" mnemonicParsing="false" onAction="#upgradeIcecream" text="UP" />
-      <Button fx:id="updrapery" layoutX="581.0" layoutY="91.0" mnemonicParsing="false" onAction="#upgradeDrapery" text="UP" />
-      <Button fx:id="upbakery" layoutX="604.0" layoutY="180.0" mnemonicParsing="false" onAction="#upgradeBakery" text="UP" />
-      <Button fx:id="upsewing" layoutX="611.0" layoutY="308.0" mnemonicParsing="false" onAction="#upgradeSewing" text="UP" />
-      <Button fx:id="upincubator" layoutX="10.0" layoutY="309.0" mnemonicParsing="false" onAction="#upgradeIncubator" text="UP" />
-   </children>
+<AnchorPane fx:id="rootPane" prefHeight="497.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameCenter">
+    <children>
+        <ImageView fitHeight="490.0" fitWidth="678.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/photo_2021-04-23_10-38-54.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="6.0" onMouseClicked="#buyChicken" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/chicken.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="51.0" onMouseClicked="#buyTurkey" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/turkey.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="96.0" onMouseClicked="#buyBuffalo" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/buffalo.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="65.0" fitWidth="39.0" layoutX="142.0" onMouseClicked="#buyCat" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/cat.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="187.0" onMouseClicked="#buyDog" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/dog.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="85.0" fitWidth="654.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/status.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="108.0" fitWidth="255.0" layoutX="399.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/road_3.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="68.0" fitWidth="129.0" layoutX="521.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/Untitled-1.png" />
+            </image>
+        </ImageView>
+      <ImageView fx:id="carInRoad" fitHeight="32.0" fitWidth="55.0" layoutX="497.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="imgv_truck" fitHeight="78.0" fitWidth="73.0" layoutX="125.0" layoutY="411.0" onMouseClicked="#truckAssistant" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/truck.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="imgv_storage" fitHeight="116.0" fitWidth="167.0" layoutX="226.0" layoutY="381.0" onMouseClicked="#showStorage" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Image/storage.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="imgv_gristmill1" fitHeight="102.0" fitWidth="108.0" layoutX="51.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="imgv_drapery1" fitHeight="102.0" fitWidth="108.0" layoutX="463.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="imgv_bakery1" fitHeight="102.0" fitWidth="108.0" layoutX="507.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="imgv_milkboxing1" fitHeight="102.0" fitWidth="108.0" layoutX="29.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="imgv_well" fitHeight="85.0" fitWidth="86.0" layoutX="262.0" layoutY="49.0" onMouseClicked="#well" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../w1_1.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="imgv_sewing1" fitHeight="102.0" fitWidth="108.0" layoutX="507.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="imgv_icecream_incubator" fitHeight="102.0" fitWidth="108.0" layoutX="37.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true" />
+        <Button fx:id="gristmill" layoutX="53.0" layoutY="91.0" mnemonicParsing="false" onAction="#buildGristmill" text="Gristmill" />
+        <Button fx:id="milkboxing" layoutX="53.0" layoutY="192.0" mnemonicParsing="false" onAction="#buildMilkBoxing" text="MilkBoxing" />
+        <Button fx:id="icecream" layoutX="58.0" layoutY="284.0" mnemonicParsing="false" onAction="#buildIceCream" text="Icecream" />
+        <Button fx:id="drapery" layoutX="552.0" layoutY="92.0" mnemonicParsing="false" onAction="#buildDrapery" text="Drapery" />
+        <Button fx:id="bakery" layoutX="545.0" layoutY="180.0" mnemonicParsing="false" onAction="#buildBakery" text="Bakery" />
+        <Button fx:id="sewing" layoutX="544.0" layoutY="296.0" mnemonicParsing="false" onAction="#buildSewing" text="Sewing" />
+        <Button fx:id="incubator" layoutX="57.0" layoutY="308.0" mnemonicParsing="false" onAction="#buildIncubator" text="Incubator" />
+        <Button fx:id="upgristmill" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#upgradeGristmill" text="UP" textFill="#4e16da" />
+        <Button fx:id="upmilkboxing" layoutX="14.0" layoutY="192.0" mnemonicParsing="false" onAction="#upgradeMilkBoxing" text="UP" textFill="#3d14d3" />
+        <Button fx:id="upicecream" layoutX="10.0" layoutY="284.0" mnemonicParsing="false" onAction="#upgradeIcecream" text="UP" textFill="#500ff5" />
+        <Button fx:id="updrapery" layoutX="611.0" layoutY="104.0" mnemonicParsing="false" onAction="#upgradeDrapery" text="UP" textFill="#4717bf" />
+        <Button fx:id="upbakery" layoutX="604.0" layoutY="180.0" mnemonicParsing="false" onAction="#upgradeBakery" text="UP" textFill="#4811dd" />
+        <Button fx:id="upsewing" layoutX="611.0" layoutY="308.0" mnemonicParsing="false" onAction="#upgradeSewing" text="UP" textFill="#460be8" />
+        <Button fx:id="upincubator" layoutX="10.0" layoutY="309.0" mnemonicParsing="false" onAction="#upgradeIncubator" text="UP" textFill="#3909d7" />
+        <Button fx:id="menu" layoutX="5.0" layoutY="446.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="39.0" prefWidth="60.0" text="Menu" textFill="#f20707">
+            <font>
+                <Font name="System Bold Italic" size="15.0" />
+            </font>
+        </Button>
+      <ImageView fx:id="frontMouse" fitHeight="189.0" fitWidth="291.0" layoutX="173.0" layoutY="171.0" onMouseClicked="#plantPickCage" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="coin" layoutX="404.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amin" textAlignment="CENTER" wrappingWidth="92.99999788403511">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="531.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Great!" textAlignment="CENTER" visible="false" wrappingWidth="108.00000268220901">
+         <font>
+            <Font name="EucrosiaUPC" size="60.0" />
+         </font>
+      </Text>
+    </children>
 </AnchorPane>

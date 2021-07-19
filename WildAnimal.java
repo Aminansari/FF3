@@ -1,5 +1,10 @@
 package sample;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class WildAnimal {
@@ -11,6 +16,18 @@ public class WildAnimal {
     private int remainedTimeInCage=1;
     private boolean completedCage=false;
     private int timeOnGrounOnCompletedCage=5;
+    private ImageView imgv_wild = new ImageView();
+    private ImageView imgv_cage = new ImageView();
+
+    public ArrayList<Image> getImgCages() {
+        return imgCages;
+    }
+
+    public void setImgCages(ArrayList<Image> imgCages) {
+        this.imgCages = imgCages;
+    }
+
+    private ArrayList<Image> imgCages = new ArrayList<>();
 
     public WildAnimal(String name) {
         this.name = name;
@@ -19,14 +36,28 @@ public class WildAnimal {
         if (name.equalsIgnoreCase("lion")){
             this.speed=1;
             this.maxCageStep=3;
+            this.imgv_wild.setImage(new Image(new File("lion1.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_05.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_07.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_09.png").toURI().toString()));
         }
         else if (name.equalsIgnoreCase("bear")){
             this.speed=1;
             this.maxCageStep=4;
+            this.imgv_wild.setImage(new Image(new File("bear1.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_03.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_05.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_07.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_09.png").toURI().toString()));
         }
         else if (name.equalsIgnoreCase("tiger")){
             this.speed=2;
             this.maxCageStep=4;
+            this.imgv_wild.setImage(new Image(new File("tiger1.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_03.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_05.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_07.png").toURI().toString()));
+            this.imgCages.add(new Image(new File("build_09.png").toURI().toString()));
         }
     }
 
@@ -95,5 +126,21 @@ public class WildAnimal {
 
     public void setTimeOnGrounOnCompletedCage(int timeOnGrounOnCompletedCage) {
         this.timeOnGrounOnCompletedCage = timeOnGrounOnCompletedCage;
+    }
+
+    public ImageView getImgv_wild() {
+        return imgv_wild;
+    }
+
+    public void setImgv_wild(ImageView imgv_wild) {
+        this.imgv_wild = imgv_wild;
+    }
+
+    public ImageView getImgv_cage() {
+        return imgv_cage;
+    }
+
+    public void setImgv_cage(ImageView imgv_cage) {
+        this.imgv_cage = imgv_cage;
     }
 }

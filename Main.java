@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

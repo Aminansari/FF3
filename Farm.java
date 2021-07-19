@@ -1,6 +1,11 @@
 package sample;
 
+import javafx.scene.image.ImageView;
+
 public class Farm {
+
+    private ImageView[][] imgv_farm = new ImageView[6][6] ;
+
     public int[][] getPosition() {
         return position;
     }
@@ -34,5 +39,13 @@ public class Farm {
 
     public void setPlant(int x , int y) {
         this.position[x-1][y-1]++;
+    }
+
+    public ImageView[][] getImgv_farm() {
+        return imgv_farm;
+    }
+
+    public void setImgv_farm(ImageView[][] imgv_farm) {
+        this.imgv_farm = imgv_farm;
     }
 }

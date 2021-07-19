@@ -18,20 +18,15 @@
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-        <Button fx:id="logout" layoutX="227.0" layoutY="288.0" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="44.0" prefWidth="100.0" text="Log out">
+        <Button fx:id="logout" layoutX="227.0" layoutY="230.0" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="44.0" prefWidth="100.0" text="Log out">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-        <Button fx:id="exit" layoutX="227.0" layoutY="340.0" mnemonicParsing="false" onAction="#exitPressed" prefHeight="44.0" prefWidth="100.0" text="Exit">
+        <Button fx:id="exit" layoutX="227.0" layoutY="282.0" mnemonicParsing="false" onAction="#exitPressed" prefHeight="44.0" prefWidth="100.0" text="Exit">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-      <Button fx:id="settings" layoutX="227.0" layoutY="232.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Settings">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Button>
     </children>
 </AnchorPane>
